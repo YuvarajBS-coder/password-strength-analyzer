@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Strength Analyzer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="badge">CYBER SECURITY PROJECT</div>
+    <h1>Password Strength Analyzer</h1>
+    <p class="subtitle">Evaluate length, complexity, uniqueness and password reuse.</p>
+
+    <label>User ID <span>(required for password history)</span></label>
+    <input id="userId" placeholder="e.g. student01" autocomplete="off">
+
+    <label>Password</label>
+    <div class="input-row">
+      <input id="password" type="password" placeholder="Enter password" autocomplete="new-password">
+      <button id="toggle" class="secondary">Show</button>
+    </div>
+
+    <div class="meter"><div id="bar"></div></div>
+    <div id="strength">Enter a password</div>
+
+    <div class="checks">
+      <div id="length">○ 8+ characters</div>
+      <div id="lowercase">○ Lowercase letter</div>
+      <div id="uppercase">○ Uppercase letter</div>
+      <div id="number">○ Number</div>
+      <div id="special">○ Special character</div>
+      <div id="unique">○ Unique character variety</div>
+    </div>
+
+    <div id="reuse" class="reuse"></div>
+
+    <section>
+      <h2>Suggestions</h2>
+      <ul id="feedback"><li>Start typing to analyze.</li></ul>
+    </section>
+
+    <div class="actions">
+      <button id="save">Check &amp; Save to History</button>
+    </div>
+    <div id="message"></div>
+
+    <section>
+      <h2>Strong Password Generator</h2>
+      <div class="input-row">
+        <input id="genLength" type="number" min="12" max="64" value="16">
+        <button id="generate">Generate</button>
+      </div>
+      <div class="input-row">
+        <input id="generated" readonly>
+        <button id="copy" class="secondary">Copy</button>
+      </div>
+    </section>
+
+    <p class="privacy">Security note: password history stores salted PBKDF2-SHA256 hashes, not plaintext passwords.</p>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
